@@ -1,6 +1,10 @@
 html, body {
     width: 100%;
     height: 100%;
+    background-image: url(./image/content_background_image.jpeg);
+    background-size:cover; 
+    background-position:center center; 
+    background-repeat:no-repeat;
 }
 
 .map, .top_bars {
@@ -8,10 +12,37 @@ html, body {
     height: 50%;
 }
 
-.map {
-    background-color: aqua;
+.top_bars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.top_bars {
-background-color: burlywood;
+.top_bars_conteiner {
+    width: 90%;
+    height: 85%;
+    background: rgb(131, 165, 167, .1);
+    border-radius: 25px;
+    border: 1.5px solid rgb(192, 232, 241);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Comfortaa', cursive;
+}
+
+.top_bars_conteiner_one, .top_bars_conteiner_two {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+.top_bar_one, .top_bar_two, .top_bar_three, .top_bar_four, .top_bar_five, .top_bar_six {
+    width: 50%;
+    height: 100%;
+    background: rgb(131, 165, 167, .5);
+    border-radius: 25px;
+    border: 1.5px solid rgb(192, 232, 241);
+    margin: 5px;
 }

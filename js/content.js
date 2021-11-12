@@ -1,31 +1,47 @@
-const request = {
-    location: new google.maps.LatLng(51.5287352, -0.3817841),
-    radius: 5000,
-    type: ['restaurant']
+let lat;
+let lon;
+
+async function getInitCardinate() {
+    const city = window.localStorage.getItem("city");
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=ade0fb3053d09af11fa65cf8982f5830`;
+    currentNameCity = city;
+    try {
+        let response = await fetch(url);
+
+        if (response.ok) { 
+            const data = await response.json();
+            lat = data.city.coord.lat;
+            lon = data.city.coord.lon;
+        } else {
+            console.log("Error HTTP: " + response.status);
+        };
+    } catch(e) {
+        console.log(e);
+    };
 };
 
-const results = [];
-const places = document.querySelector('.top_bars');
-const service = new google.maps.places.PlacesService(places);
+async function getBarInfo() {
+    try {
+        const url = `https://api.tomtom.com/search/2/search/bar.json?key=U4ruU50VG7Jlseidnv57GSrZGPKC3rfo&lat=${lat}&lon=${lon}`;
+        let response = await fetch(url);
 
-const callback = (response, status, pagination) => {
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
-        results.push(...response);
-    }
+        if (response.ok) { 
+            const data = await response.json();
+            
+            console.log(data);
+        } else {
+            alert("Error HTTP: " + response.status);
+        };
+    } catch(e) {
+        console.log(e);
+    };
+};
 
-    if (pagination.hasNextPage) {
-        setTimeout(() => pagination.nextPage(), 2000);
-    } else {
-        displayResults();
-    }
+const start = async function( ){
+
+    await getInitCardinate();
+    await getBarInfo();
 }
+start();
 
-service.nearbySearch(request, callback);
-
-const displayResults = () => {
-    results.filter(result => result.rating)
-            .sort((a, b) => a.rating > b.rating ? -1 : 1)
-            .forEach(result => {
-                places.innerHTML += `<li>${result.name} - ${result.rating}</li>`;
-            });
-}
+// U4ruU50VG7Jlseidnv57GSrZGPKC3rfo
