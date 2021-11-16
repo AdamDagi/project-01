@@ -75,3 +75,9 @@ html {
 .search_box button:hover {
     background: #0b7dda;
 }
+
+.sprint{
+    color: rgba(255, 255, 255, 0.918);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+

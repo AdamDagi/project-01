@@ -92,3 +92,8 @@ to {
     transform: rotate(360deg);
 }
 }
+
+.sprint{
+color: rgba(255, 255, 255, 0.918);
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
