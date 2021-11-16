@@ -4,7 +4,10 @@ let lat;
 let lon;
 
 async function getInitCardinate() {
-    const city = window.localStorage.getItem("city");
+    // const city = window.localStorage.getItem("city");
+    const queryString = document.location.search;
+    const city = queryString.split('=')[1];
+    console.log(city)
     const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=ade0fb3053d09af11fa65cf8982f5830`;
     currentNameCity = city;
     try {
