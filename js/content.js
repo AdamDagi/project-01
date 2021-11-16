@@ -17,6 +17,7 @@ async function getInitCardinate() {
             const data = await response.json();
             lat = data.city.coord.lat;
             lon = data.city.coord.lon;
+            await mapApi()
         } else {
             console.log("Error HTTP: " + response.status);
         };
@@ -24,6 +25,34 @@ async function getInitCardinate() {
         console.log(e);
     };
 };
+
+// add map api
+
+async function mapApi(){
+//     var mapUrl = `https://api.tomtom.com/map/1/tile/basic/main/20/0/0.pbf?view=Unified&key=IF2Ntj8GbNqk4HGffxVdoEvQM2b2gJgJ`
+//     fetch(mapUrl)
+//     // .then((res) => res.json())
+//     .then((res) => console.log(res))
+//     // .then((data) => console.log("map data", data))
+const API_KEY = 'IF2Ntj8GbNqk4HGffxVdoEvQM2b2gJgJ';
+const city = {lng: lon, lat: lat};
+var map = tt.map({
+  key: API_KEY,
+  container: 'map-div',
+  center: city,
+  zoom: 10
+});
+};
+
+
+
+// mapApi()
+
+// // const APPLICATION_NAME = 'My Application';
+// const APPLICATION_VERSION = '1.0';
+ 
+// tt.setProductInfo(APPLICATION_NAME, APPLICATION_VERSION);
+
 
 async function getBarInfo() {
     const url = `https://api.tomtom.com/search/2/search/bar.json?key=U4ruU50VG7Jlseidnv57GSrZGPKC3rfo&lat=${lat}&lon=${lon}`;
