@@ -17,10 +17,10 @@ When I click the logo for the page<br>
 I am then taken back to the city search form 
 
 ## Built With
-** HTML <br>
-** CSS <br>
-** JAVASCRIPT <br>
-** API
+* HTML <br>
+* CSS <br>
+* JAVASCRIPT <br>
+* API
 
 ## Preview Of Page
 <img src="./css/image/proj-img.png">
